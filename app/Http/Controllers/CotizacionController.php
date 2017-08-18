@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Paquete;
 
 class CotizacionController extends Controller
 {
@@ -37,7 +38,167 @@ class CotizacionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $paquetes = Paquete::where('habitacion_id', $request->habitacion)->where('vista_id', $request->vista)->get();
+        $adultos=$request->adultos;
+        $niños=$request->niños;
+        $personas=$adultos+$niños;
+
+        if ($request->habitacion==1) {//single room
+          if ($personas>1) {
+            return response()->json([
+              'success' => 'error',
+              'msg' => "Esta habitación es para una sola persona."
+            ]);
+          }
+          else {
+            foreach ($paquetes as $paquete) {
+                    $datos[]=array(
+                      'id'=>$paquete->id,
+                      'precio'=>$paquete->precio
+                    );
+                  }
+            return response()->json($datos);
+          }
+        }
+
+        if ($request->habitacion==2) {//double room
+          if ($personas>2) {
+            return response()->json([
+              'success' => 'error',
+              'msg' => "Esta habitación es para dos personas."
+            ]);
+          }
+          else {
+            foreach ($paquetes as $paquete) {
+                    $datos[]=array(
+                      'id'=>$paquete->id,
+                      'precio'=>$paquete->precio
+                    );
+                  }
+            return response()->json($datos);
+          }
+        }
+
+        if ($request->habitacion==3) {//adult sharing
+          if ($adultos>4) {
+            return response()->json([
+              'success' => 'error',
+              'msg' => "Esta habitación es solo para 4 personas."
+            ]);
+          }
+          elseif ($niños>0) {
+            return response()->json([
+              'success' => 'error',
+              'msg' => "Esta habitación es solo para mayores de 18 años."
+            ]);
+          }
+          else {
+            foreach ($paquetes as $paquete) {
+                    $datos[]=array(
+                      'id'=>$paquete->id,
+                      'precio'=>$paquete->precio
+                    );
+                  }
+            return response()->json($datos);
+          }
+        }
+
+        if ($request->habitacion==4) {//jr sharing
+          if ($niños>3) {
+            return response()->json([
+              'success' => 'error',
+              'msg' => "Esta habitación es solo para 3 personas."
+            ]);
+          }
+          elseif ($adultos>0) {
+            return response()->json([
+              'success' => 'error',
+              'msg' => "Esta habitación es solo para personas entre 12 y 17 años."
+            ]);
+          }
+          else {
+            foreach ($paquetes as $paquete) {
+                    $datos[]=array(
+                      'id'=>$paquete->id,
+                      'precio'=>$paquete->precio
+                    );
+                  }
+            return response()->json($datos);
+          }
+        }
+
+        if ($request->habitacion==5) {//kids sharing
+          if ($niños>3) {
+            return response()->json([
+              'success' => 'error',
+              'msg' => "Esta habitación es solo para 3 personas."
+            ]);
+          }
+          elseif ($adultos>0) {
+            return response()->json([
+              'success' => 'error',
+              'msg' => "Esta habitación es solo para personas entre 3 y 11 años."
+            ]);
+          }
+          else {
+            foreach ($paquetes as $paquete) {
+                    $datos[]=array(
+                      'id'=>$paquete->id,
+                      'precio'=>$paquete->precio
+                    );
+                  }
+            return response()->json($datos);
+          }
+        }
+
+        if ($request->habitacion==6) {//extra room kids
+          if ($niños>3) {
+            return response()->json([
+              'success' => 'error',
+              'msg' => "Esta habitación es solo para 3 personas."
+            ]);
+          }
+          elseif ($adultos>0) {
+            return response()->json([
+              'success' => 'error',
+              'msg' => "Esta habitación es solo para menores de edad."
+            ]);
+          }
+          else {
+            foreach ($paquetes as $paquete) {
+                    $datos[]=array(
+                      'id'=>$paquete->id,
+                      'precio'=>$paquete->precio
+                    );
+                  }
+            return response()->json($datos);
+          }
+        }
+
+        if ($request->habitacion==7) {//extra night
+          if ($niños>3) {
+            return response()->json([
+              'success' => 'error',
+              'msg' => "Esta habitación solo puede alojar 3 menores."
+            ]);
+          }
+          elseif ($adultos>2) {
+            return response()->json([
+              'success' => 'error',
+              'msg' => "Esta habitación solo puede alojar 2 adultos."
+            ]);
+          }
+          else {
+            foreach ($paquetes as $paquete) {
+                    $datos[]=array(
+                      'id'=>$paquete->id,
+                      'precio'=>$paquete->precio
+                    );
+                  }
+            return response()->json($datos);
+          }
+        }
+
     }
 
     /**
