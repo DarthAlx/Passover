@@ -10,6 +10,10 @@ use App\Paquete;
 
 class CotizacionController extends Controller
 {
+
+  public function __construct() {
+        $this->beforeFilter('csrf', ['on' => '']);
+}
     /**
      * Display a listing of the resource.
      *
@@ -38,6 +42,7 @@ class CotizacionController extends Controller
      */
     public function store(Request $request)
     {
+
         $paquetes = Paquete::where('habitacion_id', $request->habitacion)->where('vista_id', $request->vista)->get();
         $adultos=$request->adultos;
         $niños=$request->niños;

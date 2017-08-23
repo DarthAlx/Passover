@@ -7,7 +7,6 @@
     <body>
         <div class="container">
             <div class="content">
-
                 <form class="" action="{{url('/cotizar')}}" method="post">
                   {!! csrf_field() !!}
                   <input type="text" class="form-control" name="nombre" value="" placeholder="Nombre" required>
@@ -21,8 +20,6 @@
                   <select class=""class="form-control" id="vista" name="vista" value="" required>
                     <option value="">Selecciona</option>
                   </select>
-
-
                   <input type="number" class="form-control" name="adultos" min="0" value="" placeholder="Numero de adultos" required>
                   <input type="number" class="form-control" name="niños" min="0" value="" placeholder="Numero de niños" required>
                   <input type="tel" class="form-control" name="tel" value="" placeholder="Teléfono" required>
