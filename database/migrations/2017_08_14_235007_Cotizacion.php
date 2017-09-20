@@ -16,12 +16,13 @@ class Cotizacion extends Migration
         $table->increments('id');
         $table->string('nombre');
         $table->integer('edad');
-        $table->string('correo');
+        $table->string('email');
         $table->string('habitacion');
         $table->string('vista');
         $table->integer('adultos');
         $table->integer('niños');
         $table->integer('telefono');
+        $table->string('paquete');
         $table->timestamps();
     });
     }

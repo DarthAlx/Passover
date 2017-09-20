@@ -8,7 +8,6 @@
         <div class="container">
             <div class="content">
                 <form class="" action="{{url('/cotizar')}}" method="post">
-                  {!! csrf_field() !!}
                   <input type="text" class="form-control" name="nombre" value="" placeholder="Nombre" required>
                   <input type="number" min="0" class="form-control" name="edad" value="" placeholder="Edad" required>
                   <input type="text" class="form-control" name="email" value="" placeholder="Correo" required>
