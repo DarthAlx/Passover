@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Paquete;
+use Mail;
+use App\Cotizacion;
 
 class CotizacionController extends Controller
 {
@@ -47,8 +49,23 @@ class CotizacionController extends Controller
         $adultos=$request->adultos;
         $niños=$request->niños;
         $personas=$adultos+$niños;
+        $nombre = $request->nombre;
+        $edad = $request->edad;
+        $correo = $request->correo;
+        $habitacion = $request->habitacion;
+        $vista = $request->vista;
+        $telefono = $request->telefono;
 
-        if ($request->habitacion==1) {//single room
+        $guardar = new Cotizacion($request->all());
+        $guardar->save();
+        $datos=$request;
+        $user = array('email' => $correo,'nombre' => $correo );
+        Mail::send('emails.cotizacion', ['datos'=>$datos], function ($m) use ($user) {
+            $m->from('alxunscarred@gmail.com', 'Organización Hafikoman');
+            $m->to($user['email'], $user['name'])->subject('Cotización');
+        });
+
+      /*  if ($request->habitacion==1) {//single room
           if ($personas>1) {
             return response()->json([
               'success' => 'error',
@@ -202,7 +219,7 @@ class CotizacionController extends Controller
                   }
             return response()->json($datos);
           }
-        }
+        }*/
 
     }
 
