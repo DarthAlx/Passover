@@ -65,6 +65,7 @@ class CotizacionController extends Controller
               'success' => 'error',
               'msg' => "Esta habitación es para una sola persona."
             ]);*/
+            return redirect()->intended("http://desarrollo-pd.com/cotizador2?error=1");
             $precio="Error: Esta habitación es para una sola persona.";
           }
           else {
@@ -85,6 +86,7 @@ class CotizacionController extends Controller
               'success' => 'error',
               'msg' => "Esta habitación es para dos personas."
             ]);*/
+            return redirect()->intended("http://desarrollo-pd.com/cotizador2?error=2");
             $precio="Error: Esta habitación es para dos personas.";
           }
           else {
@@ -105,6 +107,7 @@ class CotizacionController extends Controller
               'success' => 'error',
               'msg' => "Esta habitación es solo para 4 personas."
             ]);*/
+            return redirect()->intended("http://desarrollo-pd.com/cotizador2?error=3");
             $precio="Error: Esta habitación es solo para cuatro personas.";
           }
           elseif ($niños>0) {
@@ -112,6 +115,7 @@ class CotizacionController extends Controller
               'success' => 'error',
               'msg' => "Esta habitación es solo para mayores de 18 años."
             ]);*/
+            return redirect()->intended("http://desarrollo-pd.com/cotizador2?error=4");
             $precio="Error: Esta habitación es solo para mayores de 18 años.";
           }
           else {
@@ -132,6 +136,7 @@ class CotizacionController extends Controller
               'success' => 'error',
               'msg' => "Esta habitación es solo para 3 personas."
             ]);*/
+            return redirect()->intended("http://desarrollo-pd.com/cotizador2?error=5");
             $precio="Error: Esta habitación es solo para tres personas.";
           }
           elseif ($adultos>0) {
@@ -139,6 +144,7 @@ class CotizacionController extends Controller
               'success' => 'error',
               'msg' => "Esta habitación es solo para personas entre 12 y 17 años."
             ]);*/
+            return redirect()->intended("http://desarrollo-pd.com/cotizador2?error=6");
             $precio="Error: Esta habitación es solo para personas entre 12 y 17 años.";
           }
           else {
@@ -159,6 +165,7 @@ class CotizacionController extends Controller
               'success' => 'error',
               'msg' => "Esta habitación es solo para 3 personas."
             ]);*/
+            return redirect()->intended("http://desarrollo-pd.com/cotizador2?error=7");
             $precio="Error: Esta habitación es solo para tres personas.";
           }
           elseif ($adultos>0) {
@@ -166,6 +173,7 @@ class CotizacionController extends Controller
               'success' => 'error',
               'msg' => "Esta habitación es solo para personas entre 3 y 11 años."
             ]);*/
+            return redirect()->intended("http://desarrollo-pd.com/cotizador2?error=8");
             $precio="Error: Esta habitación es solo para personas entre 3 y 11 años.";
           }
           else {
@@ -186,6 +194,7 @@ class CotizacionController extends Controller
               'success' => 'error',
               'msg' => "Esta habitación es solo para 3 personas."
             ]);*/
+            return redirect()->intended("http://desarrollo-pd.com/cotizador2?error=9");
             $precio="Error: Esta habitación es solo para tres personas.";
           }
           elseif ($adultos>0) {
@@ -193,6 +202,7 @@ class CotizacionController extends Controller
               'success' => 'error',
               'msg' => "Esta habitación es solo para menores de edad."
             ]);*/
+            return redirect()->intended("http://desarrollo-pd.com/cotizador2?error=10");
             $precio="Error: Esta habitación es solo para menores de edad.";
           }
           else {
@@ -213,6 +223,7 @@ class CotizacionController extends Controller
               'success' => 'error',
               'msg' => "Esta habitación solo puede alojar 3 menores."
             ]);*/
+            return redirect()->intended("http://desarrollo-pd.com/cotizador2?error=11");
             $precio="Esta habitación solo puede alojar tres menores.";
           }
           elseif ($adultos>2) {
@@ -220,6 +231,7 @@ class CotizacionController extends Controller
               'success' => 'error',
               'msg' => "Esta habitación solo puede alojar 2 adultos."
             ]);*/
+            return redirect()->intended("http://desarrollo-pd.com/cotizador2?error=12");
             $precio="Error: Esta habitación solo puede alojar dos adultos.";
           }
           else {
